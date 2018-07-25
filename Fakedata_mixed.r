@@ -29,11 +29,12 @@ z5 <- rep(NA,N) #qtly price variable
 for(i in 3:N) {
   z1[i] = 0.5*x[i] + 1*p[i] + rnorm(1, 0, 1)
   z2[i] = -0.3*x[i] + rnorm(1, 0, 1)
-  z3[i] = (1/3)*(x[i]+x[i-1]+x[i-2])*0.7 + (1/3)*(p[i]+p[i-1]+p[i-2])*0.5 + rnorm(1, 0, 1)
   if (QTLY[i] == 3) {
+    z3[i] = (1/3)*(x[i]+x[i-1]+x[i-2])*0.7 + (1/3)*(p[i]+p[i-1]+p[i-2])*0.5 + rnorm(1, 0, 1)
     z4[i] = (1/3)*(x[i]+x[i-1]+x[i-2])*0.4 + rnorm(1, 0, 1)
     z5[i] = (1/3)*(p[i]+p[i-1]+p[i-2])*0.6 + rnorm(1, 0, 1)
   } else {
+    z3[i] = -999
     z4[i] = -999
     z5[i] = -999
   }

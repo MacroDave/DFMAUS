@@ -10,7 +10,7 @@ parameters {
   vector[T] phat; // state price variable
   
   real<lower = 0> gamma_1; // First factor loading--restricted to positive for identificaton
-  vector[3] gamma_rest; // The rest of the factor loadings
+  vector[P-2] gamma_rest; // The rest of the factor loadings
   
   real<lower=0> theta; // AR(1) Coef on state Series
   real<lower=0> phi;   // AR(1) coef 
@@ -26,8 +26,7 @@ transformed parameters {
   vector[P-1] gamma;
   // Need to create a complete factor loading vector
   gamma[1] = gamma_1;
-  gamma[2:4] = gamma_rest;
-  
+  gamma[2:(P-1)] = gamma_rest;
 }
 
 model {
